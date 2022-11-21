@@ -2,9 +2,10 @@ name: PlayDate Build
 
 on:
   push:
-    branches: [ "master" ]
+  # Change this if your main branch is master
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 env:
   # Change if the SDK Version change (from the downloaded version
