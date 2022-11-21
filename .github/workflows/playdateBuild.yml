@@ -9,10 +9,8 @@ on:
 
 env:
   # Change if the SDK Version change (from the downloaded version
-  PLAYDATE_SDK_FOLDER: PlaydateSDK-1.12.3
-  # Change if your game is not on the source folder
   SOURCE_FOLDER: ./source
-  PLAYDATE_SDK_PATH: ./PLAYDATE_SDK_FOLDER
+  PLAYDATE_SDK_PATH: ${{ env.GITHUB_ACTION_PATH }}/PlaydateSDK-1.12.3
   
 jobs:
   build:
@@ -34,13 +32,12 @@ jobs:
 
       - name: Install PlayDate SDK
         run: |
-          pwd
           wget https://download.panic.com/playdate_sdk/Linux/PlaydateSDK-latest.tar.gz
           tar -xf PlaydateSDK-latest.tar.gz
       - name: Build PlayDate Game
         env:
           NAME: ${{ steps.metadata.outputs.name }}
-        run: ./$PLAYDATE_SDK_FOLDER/bin/pdc ./$SOURCE_FOLDER ./$NAME.pdx
+        run: $PLAYDATE_SDK_PATH/bin/pdc ./$SOURCE_FOLDER ./$NAME.pdx
       - name: Zip File
         env:
           NAME: ${{ steps.metadata.outputs.name }}
