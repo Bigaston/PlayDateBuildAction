@@ -1,0 +1,1 @@
+A little Github Actions to auto build and release PlayDate game when push on Master
