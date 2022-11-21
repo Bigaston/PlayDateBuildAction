@@ -12,6 +12,7 @@ env:
   PLAYDATE_SDK_FOLDER: PlaydateSDK-1.12.3
   # Change if your game is not on the source folder
   SOURCE_FOLDER: ./source
+  PLAYDATE_SDK_PATH: ./PLAYDATE_SDK_FOLDER
   
 jobs:
   build:
@@ -33,6 +34,7 @@ jobs:
 
       - name: Install PlayDate SDK
         run: |
+          pwd
           wget https://download.panic.com/playdate_sdk/Linux/PlaydateSDK-latest.tar.gz
           tar -xf PlaydateSDK-latest.tar.gz
       - name: Build PlayDate Game
