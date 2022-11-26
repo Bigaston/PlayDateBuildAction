@@ -3,9 +3,9 @@ name: PlayDate Build
 on:
   push:
   # Change this if your main branch is master
-    branches: [ "master" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
   
 jobs:
   build:
