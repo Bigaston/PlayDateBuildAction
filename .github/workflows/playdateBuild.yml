@@ -28,7 +28,7 @@ jobs:
           echo "name=$NAME" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "release=$RELEASE" >> $GITHUB_OUTPUT
-          echo "PLAYDATE_SDK_FOLDER=$(pwd)/$PLAYDATE_SDK_FOLDER" >> $GITHUB_ENV
+          echo "PLAYDATE_SDK_PATH=$(pwd)/$PLAYDATE_SDK_FOLDER" >> $GITHUB_ENV
       - name: Install PlayDate SDK
         run: |
           wget https://download.panic.com/playdate_sdk/Linux/PlaydateSDK-latest.tar.gz
