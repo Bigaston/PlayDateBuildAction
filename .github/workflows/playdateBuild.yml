@@ -37,7 +37,7 @@ jobs:
         env:
           NAME: ${{ steps.metadata.outputs.name }}
         run: |
-          $PLAYDATE_SDK_PATH/bin/pdc ./$SOURCE_FOLDER ./$NAME.pdx
+          $PLAYDATE_SDK_PATH/bin/pdc ./$SOURCE_FOLDER "./$NAME.pdx"
       - name: Zip File
         env:
           NAME: ${{ steps.metadata.outputs.name }}
@@ -49,5 +49,5 @@ jobs:
         with:
           artifacts: "./${{ steps.metadata.outputs.release }}"
           allowUpdates: true
-          name: ${{ steps.metadata.outputs.name }} ${{ steps.metadata.outputs.version }}
+          name: V${{ steps.metadata.outputs.version }}
           tag: ${{ steps.metadata.outputs.version }}
