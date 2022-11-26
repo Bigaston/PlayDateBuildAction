@@ -3,18 +3,18 @@ name: PlayDate Build
 on:
   push:
   # Change this if your main branch is master
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
-
-env:
-  # Change if the SDK Version change (from the downloaded version
-  SOURCE_FOLDER: ./source
-  PLAYDATE_SDK_PATH: ${{ env.GITHUB_ACTION_PATH }}/PlaydateSDK-1.12.3
+    branches: [ "master" ]
   
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    env:
+      # Change if the SDK Version change (from the downloaded version
+      SOURCE_FOLDER: ./source
+      PLAYDATE_SDK_FOLDER: PlaydateSDK-1.12.3
 
     steps:
       - uses: actions/checkout@v3
@@ -29,7 +29,7 @@ jobs:
           echo "name=$NAME" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "release=$RELEASE" >> $GITHUB_OUTPUT
-
+          echo "PLAYDATE_SDK_FOLDER=$(pwd)/$PLAYDATE_SDK_FOLDER" >> $GITHUB_ENV
       - name: Install PlayDate SDK
         run: |
           wget https://download.panic.com/playdate_sdk/Linux/PlaydateSDK-latest.tar.gz
@@ -37,7 +37,8 @@ jobs:
       - name: Build PlayDate Game
         env:
           NAME: ${{ steps.metadata.outputs.name }}
-        run: $PLAYDATE_SDK_PATH/bin/pdc ./$SOURCE_FOLDER ./$NAME.pdx
+        run: |
+          $PLAYDATE_SDK_PATH/bin/pdc ./$SOURCE_FOLDER ./$NAME.pdx
       - name: Zip File
         env:
           NAME: ${{ steps.metadata.outputs.name }}
