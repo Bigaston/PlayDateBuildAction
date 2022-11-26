@@ -1,3 +1,5 @@
+import "CoreLibs/sprites"
+
 local function loadGame()
 	playdate.display.setRefreshRate(50) -- Sets framerate to 50 fps
 	math.randomseed(playdate.getSecondsSinceEpoch()) -- seed for math.random
