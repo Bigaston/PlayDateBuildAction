@@ -10,7 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     env:
       # Change if the SDK Version change (from the downloaded version
       SOURCE_FOLDER: ./source
